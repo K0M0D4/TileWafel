@@ -7,9 +7,7 @@ add_subdirectory(dep/GLFW)
 
 add_library(GLAD dep/glad/src/glad.c)
 
-set(SOURCE_FILES
-    src/main.cpp
-)
+set(SOURCE_FILES src/main.cpp src/App.cpp src/App.hpp src/Window.cpp src/Window.hpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
