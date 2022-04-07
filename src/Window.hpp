@@ -24,7 +24,7 @@ namespace wfl {
     private:
         GLFWwindow* m_window{};
 
-        // chceck if good after creating
+        // check if good after creating
         void checkWindow();
     };
 }
