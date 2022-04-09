@@ -18,7 +18,7 @@ namespace wfl {
     void Shader::compile(GLenum type, const std::string& filepath) {
         std::string code = load(filepath);
         m_shader = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(m_shader, 1, &code, NULL);
+        glShaderSource(m_shader, 1, &code.c_str(), NULL);
         glCompileShader(m_shader);
     }
 
