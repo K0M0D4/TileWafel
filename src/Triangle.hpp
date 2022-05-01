@@ -15,7 +15,7 @@ namespace wfl {
 
         void init();
 
-        void draw();
+        void draw() const;
 
     private:
         std::array<float, 6> m_verts {};

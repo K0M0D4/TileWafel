@@ -13,14 +13,14 @@ namespace wfl {
     class Window {
     public:
         Window();
-        Window(int32_t sizeX, int32_t sizeY, std::string name);
+        Window(int32_t sizeX, int32_t sizeY, const std::string& name);
 
-        void create(int32_t sizeX, int32_t sizeY, std::string name);
+        void create(int32_t sizeX, int32_t sizeY, const std::string& name);
 
         bool shouldClose();
         void display();
 
-        void clear(float r, float g, float b, float a);
+        static void clear(float r, float g, float b, float a);
     private:
         GLFWwindow* m_window{};
 

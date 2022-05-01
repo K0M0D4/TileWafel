@@ -14,7 +14,7 @@ namespace wfl {
         void init(const std::string& vertexFilepath,
                       const std::string& fragmentFilepath);
 
-        void use();
+        void use() const;
 
     private:
         uint32_t m_program{};

@@ -25,7 +25,7 @@ namespace wfl {
         m_fs.remove();
     }
 
-    void ShaderProgram::use() {
+    void ShaderProgram::use() const {
         glUseProgram(m_program);
     }
 

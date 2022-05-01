@@ -9,11 +9,11 @@
 namespace wfl {
     Window::Window() = default;
 
-    Window::Window(int32_t sizeX, int32_t sizeY, std::string name) {
+    Window::Window(int32_t sizeX, int32_t sizeY, const std::string& name) {
         create(sizeX, sizeY, name);
     }
 
-    void Window::create(int32_t sizeX, int32_t sizeY, std::string name) {
+    void Window::create(int32_t sizeX, int32_t sizeY, const std::string& name) {
         m_window = glfwCreateWindow(sizeX, sizeY, name.c_str(),
                                     nullptr, nullptr);
         checkWindow();

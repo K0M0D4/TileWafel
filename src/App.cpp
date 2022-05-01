@@ -34,7 +34,7 @@ namespace wfl {
 
     App::~App() {
         glfwTerminate();
-    };
+    }
 
     void App::initGLFW() {
         if(!glfwInit()) {

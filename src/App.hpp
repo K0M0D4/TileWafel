@@ -21,8 +21,8 @@ namespace wfl {
         Triangle m_triangle{};
 
         static void initGLFW();
-        void initGLAD();
-        void setupGLFW();
+        static void initGLAD();
+        static void setupGLFW();
     };
 }
 

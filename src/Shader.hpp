@@ -17,7 +17,7 @@ namespace wfl {
 
         void compile(GLenum type, const std::string& filepath);
 
-        const uint32_t& getID() const;
+        [[nodiscard]] const uint32_t& getID() const;
         void remove() const;
 
     private:

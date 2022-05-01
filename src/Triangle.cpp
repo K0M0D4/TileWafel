@@ -5,7 +5,6 @@
 #include "Triangle.hpp"
 
 #include "glad/glad.h"
-#include <GLFW/glfw3.h>
 
 #include <iostream>
 
@@ -16,7 +15,7 @@ namespace wfl {
                  0.5f, -0.5f,
                  0.0f,  0.5f,
         };
-    };
+    }
 
     Triangle::Triangle(float ax, float ay, float bx, float by, float cx, float cy) {
         m_verts = {
@@ -26,7 +25,7 @@ namespace wfl {
         };
     }
 
-    void Triangle::draw() {
+    void Triangle::draw() const {
         glBindVertexArray(m_VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
     }
@@ -39,7 +38,7 @@ namespace wfl {
         glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
         glBufferData(GL_ARRAY_BUFFER, m_verts.size() * sizeof(float), &m_verts,
                      GL_STATIC_DRAW);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)nullptr);
         glEnableVertexAttribArray(0);
     }
 }
