@@ -17,12 +17,33 @@ namespace wfl {
 
     void Shader::compile(GLenum type, const std::string& filepath) {
         std::string code = load(filepath);
-        m_shader = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(m_shader, 1, &code.c_str(), NULL);
+        m_shader = glCreateShader(type);
+        const char* data = code.c_str();
+        glShaderSource(m_shader, 1, &data, nullptr);
         glCompileShader(m_shader);
+        errorCheck();
     }
 
-    std::string load(const std::string& filepath) {
+    const uint32_t& Shader::getID() const {
+        return m_shader;
+    }
+
+    void Shader::remove() const {
+        glDeleteShader(m_shader);
+    }
+
+    void Shader::errorCheck() const {
+        int  success;
+        char infoLog[512];
+        glGetShaderiv(m_shader, GL_COMPILE_STATUS, &success);
+
+        if(!success) {
+            glGetShaderInfoLog(m_shader, 512, nullptr, infoLog);
+            std::cout << "ERROR: Shader compilation failed: " << infoLog << "\n";
+        }
+    }
+
+    std::string Shader::load(const std::string& filepath) {
         std::ifstream file(filepath);
         if(!file.good()) {
             std::cout << "\nERROR: Opening shader file failed: " << filepath << "\n";

@@ -7,6 +7,8 @@
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
 
+#include <iostream>
+
 namespace wfl {
     Triangle::Triangle() {
         m_verts = {
@@ -24,9 +26,20 @@ namespace wfl {
         };
     }
 
-    void Triangle::initGLStuff() {
+    void Triangle::draw() {
+        glBindVertexArray(m_VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+    }
+
+    void Triangle::init() {
         glGenBuffers(1, &m_VBO);
+        glGenVertexArrays(1, &m_VAO);
+
+        glBindVertexArray(m_VAO);
         glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferData(GL_ARRAY_BUFFER, m_verts.size() * sizeof(float), &m_verts, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, m_verts.size() * sizeof(float), &m_verts,
+                     GL_STATIC_DRAW);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
     }
 }

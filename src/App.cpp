@@ -15,11 +15,18 @@ namespace wfl {
         setupGLFW();
         m_window.create(1280, 720, "TileWafel");
         initGLAD();
+
+        m_triangle.init();
+
+        m_basicShader.init("res/basic.vs", "res/basic.fs");
+        m_basicShader.use();
     }
 
     void App::start() {
         while(!m_window.shouldClose()) {
             m_window.clear(0.3f, 0.3f, 0.35f, 1.0f);
+
+            m_triangle.draw();
 
             m_window.display();
         }

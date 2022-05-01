@@ -17,10 +17,15 @@ namespace wfl {
 
         void compile(GLenum type, const std::string& filepath);
 
+        const uint32_t& getID() const;
+        void remove() const;
+
     private:
         uint32_t m_shader{};
 
-        std::string load(const std::string& filepath);
+        void errorCheck() const;
+
+        static std::string load(const std::string& filepath);
     };
 }
 

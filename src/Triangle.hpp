@@ -12,12 +12,15 @@ namespace wfl {
     public:
         Triangle();
         Triangle(float ax, float ay, float bx, float by, float cx, float cy);
+
+        void init();
+
+        void draw();
+
     private:
         std::array<float, 6> m_verts {};
 
         uint32_t m_VBO{};
         uint32_t m_VAO{};
-
-        void initGLStuff();
     };
 }
